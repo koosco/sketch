@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <title>SCD Type 2 유효 구간</title>
+  <rect width="760" height="340" fill="#ffffff"/>
+
+  <!-- 조회 대상 버전 강조 -->
+  <rect x="370" y="44" width="120" height="252" fill="#fdf3d7"/>
+  <text x="430" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#8a5a00">v2 조회 시 읽는 구간</text>
+
+  <!-- 버전 축 -->
+  <g font-size="14" font-weight="700" fill="#1c2434" text-anchor="middle">
+    <text x="310" y="32">v1</text>
+    <text x="430" y="32">v2</text>
+    <text x="550" y="32">v3</text>
+    <text x="670" y="32">v4 (현재)</text>
+  </g>
+  <g stroke="#c9ced6" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="250" y1="44" x2="250" y2="296"/>
+    <line x1="370" y1="44" x2="370" y2="296"/>
+    <line x1="490" y1="44" x2="490" y2="296"/>
+    <line x1="610" y1="44" x2="610" y2="296"/>
+    <line x1="730" y1="44" x2="730" y2="296"/>
+  </g>
+
+  <!-- 행 라벨 -->
+  <g font-size="13" fill="#1c2434">
+    <text x="20" y="77">후드티 = 후디</text>
+    <text x="20" y="127">맨투맨 = 스웨트셔츠</text>
+    <text x="20" y="177">맨투맨 = 스웨트셔츠, 크루넥</text>
+    <text x="20" y="227">운동화 = 스니커즈</text>
+    <text x="20" y="277">슬랙스 = 정장바지</text>
+  </g>
+
+  <!-- 유효 구간 막대 -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="252" y="58" width="476" height="30" rx="6" fill="#e8f0fe" stroke="#3b6fd4"/>
+    <text x="490" y="78" fill="#1f3f8a">from 1 · to NULL</text>
+
+    <rect x="252" y="108" width="116" height="30" rx="6" fill="#eceef2" stroke="#9aa2b1"/>
+    <text x="310" y="128" fill="#4a5262">from 1 · to 2</text>
+
+    <rect x="372" y="158" width="356" height="30" rx="6" fill="#e8f0fe" stroke="#3b6fd4"/>
+    <text x="550" y="178" fill="#1f3f8a">from 2 · to NULL</text>
+
+    <rect x="252" y="208" width="236" height="30" rx="6" fill="#eceef2" stroke="#9aa2b1"/>
+    <text x="370" y="228" fill="#4a5262">from 1 · to 3</text>
+
+    <rect x="372" y="258" width="356" height="30" rx="6" fill="#e8f0fe" stroke="#3b6fd4"/>
+    <text x="550" y="278" fill="#1f3f8a">from 2 · to NULL</text>
+  </g>
+</svg>

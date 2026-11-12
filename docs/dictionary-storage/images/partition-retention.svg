@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <title>버전 파티션과 리텐션</title>
+  <rect width="760" height="330" fill="#ffffff"/>
+
+  <!-- 쿼리 -->
+  <rect x="250" y="16" width="260" height="34" rx="6" fill="#fdf3d7" stroke="#c98a12"/>
+  <text x="380" y="38" text-anchor="middle" font-size="13" fill="#6b4500" font-family="SFMono-Regular, Consolas, monospace">WHERE version = 11</text>
+  <line x1="380" y1="50" x2="380" y2="72" stroke="#5b6475" stroke-width="1.5"/>
+  <path d="M374 66 L380 74 L386 66" fill="none" stroke="#5b6475" stroke-width="1.5"/>
+
+  <!-- 논리 테이블 -->
+  <rect x="30" y="76" width="700" height="44" rx="8" fill="#f4f5f7" stroke="#9aa2b1"/>
+  <text x="380" y="103" text-anchor="middle" font-size="14" font-weight="700" fill="#1c2434">dictionary_snapshot (논리 테이블 하나)</text>
+
+  <!-- 연결선 -->
+  <g stroke="#c9ced6" stroke-width="1.5">
+    <line x1="100" y1="120" x2="100" y2="160"/>
+    <line x1="240" y1="120" x2="240" y2="160"/>
+    <line x1="380" y1="120" x2="380" y2="160"/>
+    <line x1="520" y1="120" x2="520" y2="160"/>
+    <line x1="660" y1="120" x2="660" y2="160"/>
+  </g>
+  <line x1="520" y1="120" x2="520" y2="160" stroke="#c98a12" stroke-width="2.5"/>
+
+  <!-- 파티션 -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="40" y="160" width="120" height="84" rx="8" fill="#fdecec" stroke="#d25353" stroke-dasharray="6 4"/>
+    <text x="100" y="192" fill="#a32f2f">v8</text>
+    <text x="100" y="218" font-size="12" font-weight="400" fill="#a32f2f">20만 행</text>
+
+    <rect x="180" y="160" width="120" height="84" rx="8" fill="#e8f0fe" stroke="#3b6fd4"/>
+    <text x="240" y="192" fill="#1f3f8a">v9</text>
+    <text x="240" y="218" font-size="12" font-weight="400" fill="#1f3f8a">20만 행</text>
+
+    <rect x="320" y="160" width="120" height="84" rx="8" fill="#e8f0fe" stroke="#3b6fd4"/>
+    <text x="380" y="192" fill="#1f3f8a">v10</text>
+    <text x="380" y="218" font-size="12" font-weight="400" fill="#1f3f8a">20만 행</text>
+
+    <rect x="460" y="160" width="120" height="84" rx="8" fill="#fdf3d7" stroke="#c98a12" stroke-width="2.5"/>
+    <text x="520" y="192" fill="#6b4500">v11</text>
+    <text x="520" y="218" font-size="12" font-weight="400" fill="#6b4500">20만 행</text>
+
+    <rect x="600" y="160" width="120" height="84" rx="8" fill="#e3f5ec" stroke="#1e8e5a"/>
+    <text x="660" y="192" fill="#12613c">v12</text>
+    <text x="660" y="218" font-size="12" font-weight="400" fill="#12613c">20만 행</text>
+  </g>
+
+  <!-- 설명 -->
+  <g font-size="13" text-anchor="middle">
+    <text x="100" y="272" fill="#a32f2f" font-weight="700">보관 기간 초과</text>
+    <text x="100" y="292" fill="#a32f2f">파티션째 DROP</text>
+    <text x="520" y="272" fill="#6b4500" font-weight="700">파티션 프루닝</text>
+    <text x="520" y="292" fill="#6b4500">이 파티션만 읽음</text>
+    <text x="660" y="272" fill="#12613c" font-weight="700">새 버전 발행</text>
+    <text x="660" y="292" fill="#12613c">파티션 추가</text>
+  </g>
+</svg>

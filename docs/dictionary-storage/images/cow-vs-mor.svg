@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <title>Copy-on-Write와 Merge-on-Read</title>
+  <rect width="760" height="360" fill="#ffffff"/>
+
+  <!-- 패널 -->
+  <rect x="16" y="16" width="356" height="328" rx="10" fill="#f7f8fa" stroke="#e2e5ea"/>
+  <rect x="388" y="16" width="356" height="328" rx="10" fill="#f7f8fa" stroke="#e2e5ea"/>
+  <g font-size="15" font-weight="700" fill="#1c2434" text-anchor="middle">
+    <text x="194" y="46">Copy-on-Write</text>
+    <text x="566" y="46">Merge-on-Read</text>
+  </g>
+  <g font-size="12" fill="#5b6475" text-anchor="middle">
+    <text x="194" y="66">쓸 때 전체를 새로 만듦</text>
+    <text x="566" y="66">읽을 때 원본과 변경분을 합침</text>
+  </g>
+
+  <!-- COW: 기존 파일 -->
+  <text x="100" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#4a5262">v6 파일</text>
+  <g font-size="13" text-anchor="middle" fill="#4a5262">
+    <rect x="50" y="110" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="100" y="130">A</text>
+    <rect x="50" y="146" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="100" y="166">B</text>
+    <rect x="50" y="182" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="100" y="202">C</text>
+    <rect x="50" y="218" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="100" y="238">D</text>
+  </g>
+  <line x1="160" y1="180" x2="228" y2="180" stroke="#5b6475" stroke-width="1.5"/>
+  <path d="M222 174 L230 180 L222 186" fill="none" stroke="#5b6475" stroke-width="1.5"/>
+  <text x="194" y="170" text-anchor="middle" font-size="11" fill="#5b6475">전체 복사</text>
+
+  <!-- COW: 새 파일 -->
+  <text x="288" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#1f3f8a">v7 파일</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="238" y="110" width="100" height="30" rx="5" fill="#e8f0fe" stroke="#3b6fd4"/><text x="288" y="130" fill="#1f3f8a">A</text>
+    <rect x="238" y="146" width="100" height="30" rx="5" fill="#e8f0fe" stroke="#3b6fd4"/><text x="288" y="166" fill="#1f3f8a">B</text>
+    <rect x="238" y="182" width="100" height="30" rx="5" fill="#fdf3d7" stroke="#c98a12" stroke-width="2"/><text x="288" y="202" fill="#6b4500" font-weight="700">C' (수정)</text>
+    <rect x="238" y="218" width="100" height="30" rx="5" fill="#e8f0fe" stroke="#3b6fd4"/><text x="288" y="238" fill="#1f3f8a">D</text>
+    <rect x="238" y="254" width="100" height="30" rx="5" fill="#fdf3d7" stroke="#c98a12" stroke-width="2"/><text x="288" y="274" fill="#6b4500" font-weight="700">E (추가)</text>
+  </g>
+  <text x="194" y="318" text-anchor="middle" font-size="12" fill="#1c2434">읽기: v7 파일 하나만 읽으면 됨</text>
+
+  <!-- MOR: 원본 -->
+  <text x="472" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#4a5262">원본 (v6)</text>
+  <g font-size="13" text-anchor="middle" fill="#4a5262">
+    <rect x="422" y="110" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="472" y="130">A</text>
+    <rect x="422" y="146" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="472" y="166">B</text>
+    <rect x="422" y="182" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="472" y="202">C</text>
+    <rect x="422" y="218" width="100" height="30" rx="5" fill="#eceef2" stroke="#9aa2b1"/><text x="472" y="238">D</text>
+  </g>
+  <text x="566" y="186" text-anchor="middle" font-size="20" font-weight="700" fill="#5b6475">+</text>
+
+  <!-- MOR: 변경분 -->
+  <text x="660" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#6b4500">변경분 (v7 작업)</text>
+  <g font-size="13" text-anchor="middle" fill="#6b4500" font-weight="700">
+    <rect x="610" y="146" width="100" height="30" rx="5" fill="#fdf3d7" stroke="#c98a12" stroke-width="2"/><text x="660" y="166">C' (수정)</text>
+    <rect x="610" y="182" width="100" height="30" rx="5" fill="#fdf3d7" stroke="#c98a12" stroke-width="2"/><text x="660" y="202">E (추가)</text>
+  </g>
+  <text x="566" y="318" text-anchor="middle" font-size="12" fill="#1c2434">읽기: 원본에 변경분을 덮어 A, B, C', D, E를 만듦</text>
+</svg>
