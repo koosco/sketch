@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sketch 문서</title>
+  <meta name="description" content="설계 학습 노트 모음">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div id="app">불러오는 중…</div>
+
+  <script>
+    function escapeHtml(text) {
+      return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    window.$docsify = {
+      name: 'sketch 문서',
+      homepage: 'README.md',
+      loadSidebar: true,
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
+      subMaxLevel: 2,
+      auto2top: true,
+      relativePath: false,
+      search: {
+        placeholder: '문서 검색',
+        noData: '검색 결과 없음',
+        depth: 2
+      },
+      markdown: {
+        renderer: {
+          code: function (code, lang) {
+            if (lang === 'mermaid') {
+              return '<div class="diagram"><pre class="mermaid">' + escapeHtml(code) + '</pre></div>';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      plugins: [
+        function (hook) {
+          hook.doneEach(function () {
+            if (window.mermaid) {
+              window.mermaid.run({ querySelector: 'pre.mermaid' });
+            }
+            document.querySelectorAll('.markdown-section table').forEach(function (table) {
+              if (table.parentElement.classList.contains('table-wrap')) return;
+              var wrap = document.createElement('div');
+              wrap.className = 'table-wrap';
+              table.parentNode.insertBefore(wrap, table);
+              wrap.appendChild(table);
+            });
+          });
+        }
+      ]
+    };
+  </script>
+  <script src="assets/vendor/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      securityLevel: 'loose',
+      fontFamily: 'inherit',
+      themeVariables: {
+        fontSize: '15px',
+        primaryColor: '#e8f0fe',
+        primaryBorderColor: '#3b6fd4',
+        primaryTextColor: '#1c2434',
+        secondaryColor: '#fdf3d7',
+        secondaryBorderColor: '#c98a12',
+        tertiaryColor: '#f4f5f7',
+        tertiaryBorderColor: '#c9ced6',
+        lineColor: '#5b6475',
+        noteBkgColor: '#fdf3d7',
+        noteBorderColor: '#c98a12',
+        git0: '#3b6fd4',
+        git1: '#c98a12',
+        git2: '#1e8e5a',
+        gitBranchLabel0: '#ffffff',
+        gitBranchLabel1: '#ffffff',
+        gitBranchLabel2: '#ffffff',
+        quadrant1Fill: '#f4f5f7',
+        quadrant2Fill: '#e8f0fe',
+        quadrant3Fill: '#f4f5f7',
+        quadrant4Fill: '#f4f5f7',
+        quadrantPointFill: '#2f5fc4',
+        xyChart: {
+          backgroundColor: '#ffffff',
+          plotColorPalette: '#2f5fc4,#c98a12'
+        }
+      }
+    });
+  </script>
+  <script src="assets/vendor/docsify.min.js"></script>
+  <script src="assets/vendor/search.min.js"></script>
+  <script src="assets/vendor/zoom-image.min.js"></script>
+</body>
+</html>
